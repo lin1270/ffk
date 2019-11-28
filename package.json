@@ -1,7 +1,7 @@
 {
   "name": "ffk",
   "version": "1.0.1",
-  "description": "",
+  "description": "vue自动构建工具",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

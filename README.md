@@ -1,4 +1,4 @@
-# ffk - a vue project generator
+# ffk - vue自动构建工具
 
 install
 ```
