@@ -1,5 +1,10 @@
 # ffk - a vue project generator
 
+install
+```
+npm install ffk -g
+```
+
 usage:
 ```
 ffk i
