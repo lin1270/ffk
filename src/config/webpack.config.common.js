@@ -4,8 +4,6 @@ const path = require('path')
 const styleUtils = require('./styleUtils')
 const vueLoaderConfig = require('./vue-loader.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin'); //抽取样式文件
-const HappyPack = require('happypack');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 const config = require('./config')
 const process = require('process')
 const webpack = require('webpack')
@@ -60,8 +58,27 @@ module.exports = function() {
         },
         {
           test: /\.js$/,
-          loader: 'babel-loader',
-          include: [resolve('src')],
+          use: [
+            {
+                loader: require.resolve('babel-loader'),
+                options: { 
+                  babelrc: false,
+                  presets: [
+                    [require.resolve('babel-preset-env'), require.resolve("babel-preset-stage-2")]
+                  ],
+                  "plugins": [
+                    require.resolve("babel-plugin-transform-runtime"), 
+                    require.resolve('babel-plugin-transform-decorators-legacy'),
+                    require.resolve('babel-plugin-transform-class-properties'),
+                    // require.resolve('babel-macros'),
+                    [require.resolve('babel-plugin-transform-object-rest-spread'), {
+                      useBuiltIns: true
+                    }],
+                    require.resolve('babel-plugin-syntax-dynamic-import'),
+                  ]
+                }
+            }
+          ],
           exclude: [cwd('node_modules'), ownDir('node_modules')],
         },
         {
@@ -131,17 +148,6 @@ module.exports = function() {
       ]
     },
     plugins: [
-      new HappyPack({
-          id: 'happybabel',
-          loaders: ['babel-loader'],
-          threadPool: happyThreadPool,
-          verbose: true
-      }),
-      new webpack.ProvidePlugin({
-          $: "jquery",
-          jQuery: "jquery",
-          'jquery': 'jquery',
-      }),
       new CopyWebpackPlugin([
           {
               from: cwd('src/data'),
