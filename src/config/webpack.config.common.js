@@ -30,7 +30,7 @@ module.exports = function() {
     output: {
       path: path.resolve(process.cwd(), './output'),
       filename: 'assets/js/[name].[hash:8].js',
-      publicPath: './'
+      publicPath: '/'
     },
     resolve: {
       extensions: ['.js', '.vue', '.json'],
@@ -111,7 +111,7 @@ module.exports = function() {
         },
         {
           test: /\.css$/,
-          use: global.IS_DEV 
+          use: true
             ? ['css-loader', 'postcss-loader'] 
             : ExtractTextPlugin.extract({
               use: ['css-loader?minimize', 'postcss-loader'],
@@ -129,7 +129,7 @@ module.exports = function() {
         },
         {
           test: /\.sass$/,
-          use: global.IS_DEV 
+          use: true
             ? ['css-loader','postcss-loader', 'sass-loader']
             : ExtractTextPlugin.extract({
                 use: ['css-loader?minimize','postcss-loader', 'sass-loader'],
@@ -138,7 +138,7 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          use: global.IS_DEV 
+          use: true
             ? ['css-loader','postcss-loader', 'sass-loader']
             : ExtractTextPlugin.extract({
                 use: ['css-loader?minimize','postcss-loader', 'sass-loader'],

@@ -3,6 +3,7 @@ const webpackCommonConfig = require('./webpack.config.common')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const webpack = require('webpack')
 const portfinder = require('portfinder')
+const ExtractTextPlugin = require('extract-text-webpack-plugin'); //抽取样式文件
 
 const getCfg = function() {
   return webpackMerge(webpackCommonConfig(), {
@@ -24,12 +25,14 @@ const getCfg = function() {
       inline: true
     },
     plugins:[
+      
       new webpack.HotModuleReplacementPlugin(),
       new OpenBrowserPlugin({
           url: `http://localhost:${global.port}`
       }),
       new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
       new webpack.NoEmitOnErrorsPlugin(),
+      new ExtractTextPlugin('assets/css/[name][hash:8].css'),
     ]
   })
 }
