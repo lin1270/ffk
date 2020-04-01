@@ -7,7 +7,7 @@ module.exports = function () {
   const loaders = styleUtils.cssLoaders({
     minimize: !global.IS_DEV,
     sourceMap: !!global.IS_DEV,
-    extract: true,
+    extract: !global.IS_DEV,
     css: 'vue-style-loader!css-loader',
     less: 'vue-style-loader!css-loader!less-loader',
     sass: 'vue-style-loader!css-loader!sass-loader',

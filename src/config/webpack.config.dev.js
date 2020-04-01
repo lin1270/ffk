@@ -32,7 +32,6 @@ const getCfg = function() {
       }),
       new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
       new webpack.NoEmitOnErrorsPlugin(),
-      new ExtractTextPlugin('assets/css/[name][hash:8].css'),
     ]
   })
 }

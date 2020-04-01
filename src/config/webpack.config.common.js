@@ -111,7 +111,7 @@ module.exports = function() {
         },
         {
           test: /\.css$/,
-          use: true
+          use: global.IS_DEV
             ? ['css-loader', 'postcss-loader'] 
             : ExtractTextPlugin.extract({
               use: ['css-loader?minimize', 'postcss-loader'],
@@ -129,7 +129,7 @@ module.exports = function() {
         },
         {
           test: /\.sass$/,
-          use: true
+          use: global.IS_DEV
             ? ['css-loader','postcss-loader', 'sass-loader']
             : ExtractTextPlugin.extract({
                 use: ['css-loader?minimize','postcss-loader', 'sass-loader'],
@@ -138,7 +138,7 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          use: true
+          use: global.IS_DEV
             ? ['css-loader','postcss-loader', 'sass-loader']
             : ExtractTextPlugin.extract({
                 use: ['css-loader?minimize','postcss-loader', 'sass-loader'],
