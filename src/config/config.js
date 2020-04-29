@@ -58,7 +58,7 @@ module.exports = {
 
                     const item = {
                         filename: `${dir}.html`,
-                        template: `!!ejs-loader!${fullDir}\\index.ejs`,
+                        template: `!!ejs-loader!${fullDir}/index.ejs`,
                         chunks: [dir],
                         inject: true,
                         isdev: !!global.IS_DEV,
