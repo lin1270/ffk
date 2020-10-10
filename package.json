@@ -1,6 +1,6 @@
 {
   "name": "ffk",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "vue自动构建工具",
   "main": "index.js",
   "scripts": {

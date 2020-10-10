@@ -28,7 +28,7 @@ var develop = {
             };
             const server = new WebpackDevServer(compiler, devServerOptions);
 
-            server.listen(global.port, '127.0.0.1', (err) => {
+            server.listen(global.port, '0.0.0.0', (err) => {
                 console.log(`Starting server on http://localhost:${global.port}`);
             });
         })
