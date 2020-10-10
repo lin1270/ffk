@@ -112,10 +112,9 @@ module.exports = function() {
         {
           test: /\.css$/,
           use: global.IS_DEV
-            ? ['css-loader', 'postcss-loader'] 
+            ? ['style-loader', 'css-loader'] 
             : ExtractTextPlugin.extract({
-              use: ['css-loader?minimize', 'postcss-loader'],
-              fallback: 'style-loader'
+              use: ['style-loader', 'css-loader?minimize']
           }),
         },
         {
